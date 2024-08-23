@@ -28,10 +28,6 @@ import LivsyDynamicBackground
 
 struct ContentView: View {
     
-    @State private var isAnimating = false
-    @State private var startColor = Color.pink
-    @State private var endColor = Color.blue
-    
     var body: some View {
         Text("Hello, world!")
             .edgesIgnoringSafeArea(.all)
@@ -42,6 +38,7 @@ struct ContentView: View {
                 )
             }
     }
+
 }
 
 // MARK: - DynamicColorsView
@@ -58,9 +55,7 @@ struct ContentView: View {
                     backgroundColor: .cyan
                 )
             }
-            .onAppear {
-                isAnimating = true
-            }
     }
+
 }
 ```
