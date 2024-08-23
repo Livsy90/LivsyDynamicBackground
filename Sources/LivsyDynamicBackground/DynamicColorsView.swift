@@ -1,5 +1,5 @@
 //
-//  DynamicGradientView.swift
+//  DynamicColorsView.swift
 //
 //
 //  Created by Livsy on 23.08.2024.
@@ -78,7 +78,7 @@ private class CircleAnimator: ObservableObject {
     
 }
 
-public struct DynamicGradientView: View {
+public struct DynamicColorsView: View {
     
     private enum Constants {
         static let speed: Double = 3
