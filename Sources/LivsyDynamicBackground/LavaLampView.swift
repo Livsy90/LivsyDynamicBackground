@@ -9,6 +9,7 @@ import SwiftUI
 
 public struct LavaLampView: View {
     
+    @State public var isAnimating: Bool = false
     private let colors: [Color]
     
     public init(colors: [Color]) {
@@ -35,7 +36,7 @@ public struct LavaLampView: View {
                         }
                     } symbols: {
                         ForEach(1...15,id: \.self){ index in
-                            let offset = (CGSize(width: .random(in: -180...180), height: .random(in: -240...240)))
+                            let offset = (isAnimating ? CGSize(width: .random(in: -180...180), height: .random(in: -240...240)) : .zero)
                             clubbedRoundedRectangle(offset: offset)
                                 .tag(index)
                         }
@@ -43,6 +44,9 @@ public struct LavaLampView: View {
                 }
             }
             .contentShape(Rectangle())
+            .onAppear {
+                isAnimating = true
+            }
     }
     
     private func clubbedRoundedRectangle(offset: CGSize) -> some View {
