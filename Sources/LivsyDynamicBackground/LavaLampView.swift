@@ -9,23 +9,15 @@ import SwiftUI
 
 public struct LavaLampView: View {
     
-    @Binding public var isAnimating: Bool
-    @Binding public var startColor: Color
-    @Binding public var endColor: Color
+    private let colors: [Color]
     
-    public init(
-        isAnimating: Binding<Bool>,
-        startColor: Binding<Color>,
-        endColor: Binding<Color>
-    ) {
-        _isAnimating = isAnimating
-        _startColor = startColor
-        _endColor = endColor
+    public init(colors: [Color]) {
+        self.colors = colors
     }
     
     public var body: some View {
         Rectangle()
-            .fill(.linearGradient(colors: [startColor, endColor], startPoint: .top, endPoint: .bottom))
+            .fill(.linearGradient(colors: colors, startPoint: .top, endPoint: .bottom))
             .mask {
                 TimelineView(.animation(minimumInterval: 3.6, paused: false)) { _ in
                     Canvas { context, size in
@@ -43,7 +35,7 @@ public struct LavaLampView: View {
                         }
                     } symbols: {
                         ForEach(1...15,id: \.self){ index in
-                            let offset = (isAnimating ? CGSize(width: .random(in: -180...180), height: .random(in: -240...240)) : .zero)
+                            let offset = (CGSize(width: .random(in: -180...180), height: .random(in: -240...240)))
                             clubbedRoundedRectangle(offset: offset)
                                 .tag(index)
                         }
