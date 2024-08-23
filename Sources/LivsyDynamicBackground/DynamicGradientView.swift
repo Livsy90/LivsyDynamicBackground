@@ -94,7 +94,10 @@ public struct DynamicGradientView: View {
     ).autoconnect()
     private let backgroundColor: Color
     
-    public init(colors: [Color], backgroundColor: Color) {
+    public init(
+        colors: [Color],
+        backgroundColor: Color
+    ) {
         self.animator = CircleAnimator(colors: colors)
         self.backgroundColor = backgroundColor
     }
