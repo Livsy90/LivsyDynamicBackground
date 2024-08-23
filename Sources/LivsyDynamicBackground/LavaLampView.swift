@@ -45,7 +45,9 @@ public struct LavaLampView: View {
             }
             .contentShape(Rectangle())
             .onAppear {
-                isAnimating = true
+                DispatchQueue.main.async {
+                    isAnimating = true
+                }
             }
     }
     
